@@ -1,5 +1,5 @@
 # Purpose
-This project regards accounting control functions of any enterprise
+This project regards accounting control functions of any enterprise.
 
 # Project Setup
 
@@ -20,3 +20,26 @@ This project regards accounting control functions of any enterprise
 ```shell
 mvn test
 ```
+
+# Topics
+
+ 1. Domain Drive Design with Proto Buffers (.proto)
+ 2. Communication between server and client using gRPC
+ 3. Event Driven Architecture on the backend using Kafka
+
+# Modules
+ 1. account-management
+    * deposit
+    * transfer
+    * settlement operations
+ 2. trade-accounting
+    * register trades
+    * active trades
+    
+# Infrastructure
+    * Redis
+    * Kubernetes
+    * Kafka
+
+# References
+    * https://github.com/bloomrpc/bloomrpc
