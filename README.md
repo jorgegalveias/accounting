@@ -45,4 +45,4 @@ mvn test
 
 
 ## Diagram
-  ![Readme Diagram](/accounting/resources/readme-driagram.html)
+  ![Readme Diagram](resources/readme-diagram.PNG)
