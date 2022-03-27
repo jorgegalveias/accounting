@@ -1,0 +1,66 @@
+
+syntax = "proto3";
+
+option java_package = "io.devmint.finance.trade.accounting.model";
+option java_multiple_files = true;
+
+import "google/protobuf/timestamp.proto";
+//import "google/protobuf/money.proto";
+import "money.proto";
+
+enum SecurityType {
+  ETF = 0 ;
+  BOND = 1 ;
+  STOCK = 2;
+  WARRANT = 3;
+  FACTOR_CERTIFICATE = 4;
+  FUTURE = 5;
+  CFD = 6;
+}
+
+message Security{
+  string isin = 1;
+  SecurityType type = 2;
+  string name = 3;
+}
+enum TradeType{
+  SELL = 0;
+  BUY = 1;
+}
+enum TradeStatus{
+  CONFIRMED = 0;
+  CANCELLED = 1;
+  PENDING = 2;
+}
+message TradeFees {
+  float amount = 1;
+  google.type.Money currency = 2;
+}
+message Trade {
+  google.protobuf.Timestamp date = 1;
+  TradeType type = 2;
+  Security security = 3;
+  float amount = 4;
+  float price = 5;
+  string comment = 6;
+  TradeStatus status = 7;
+  TradeFees fees = 8;
+  google.type.Money currency = 9;
+  string broker = 10;
+  float forexRate = 11;
+  string trader = 12;
+}
+message Account {
+    string id = 1;
+    string broker = 2;
+    google.type.Money currency = 3;
+    repeated Asset portfolio = 4;
+    repeated Trade activeTrades = 5;
+}
+message Asset {
+  Security security = 1;
+  float amount = 2;
+  float price = 3;
+}
+
+
