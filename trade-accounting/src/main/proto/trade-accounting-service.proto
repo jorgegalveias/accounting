@@ -1,0 +1,37 @@
+syntax = "proto3";
+
+option java_package = "io.devmint.finance.trade.accounting.service";
+option java_multiple_files = true;
+
+import "google/protobuf/empty.proto";
+import "money.proto";
+import "trade-accounting-model.proto";
+
+message AssetRequest{
+  string broker = 1;
+}
+
+message AssetResponse{
+  repeated Asset assetList = 1;
+}
+
+message ActiveTradesRequest{
+  string broker = 1;
+}
+message ActiveTradesResponse{
+  repeated Trade tradeList = 1;
+}
+message RegisterTradeRequest{
+  string trade = 1;
+}
+message CreateAccountRequest{
+  string broker = 1;
+  google.type.Money currency = 2;
+}
+
+service TradeAccountingService {
+  rpc getAssets(AssetRequest) returns (AssetResponse);
+  rpc getActiveTrades(ActiveTradesRequest) returns (ActiveTradesResponse);
+  rpc registerTrade(RegisterTradeRequest) returns (google.protobuf.Empty);
+  rpc createAccount(RegisterTradeRequest) returns (google.protobuf.Empty);
+}
