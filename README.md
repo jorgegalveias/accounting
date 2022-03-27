@@ -12,7 +12,7 @@
 ## Common Frameworks used
 * spock
 * log4j 2
-* spark-java
+* grpc
 * lombok
 
 ## Running Tests
