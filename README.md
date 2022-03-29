@@ -42,7 +42,8 @@ mvn test
 
 ## References
 * [bloomrpc](https://github.com/bloomrpc/bloomrpc)
-
+* [diagrams](https://mermaid-js.github.io/mermaid/#/) 
 
 ## Diagram
   ![Readme Diagram](resources/readme-diagram.PNG)
+  
