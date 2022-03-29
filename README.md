@@ -1,3 +1,4 @@
+[![CI](https://github.com/jorgegalveias/accounting/actions/workflows/maven.yml/badge.svg)](https://github.com/jorgegalveias/accounting/actions/workflows/maven.yml)
 # Accounting
   This project regards accounting control functions of any enterprise.
 
