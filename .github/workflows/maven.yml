@@ -6,7 +6,7 @@ name: CI
 on: push
 
 jobs:
-  build:
+  unit-tests:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v3
@@ -16,5 +16,5 @@ jobs:
         java-version: '11'
         distribution: 'temurin'
         cache: maven
-    - name: Run Tests
+    - name: Run unit tests
       run: mvn clean test
