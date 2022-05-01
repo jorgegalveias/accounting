@@ -12,7 +12,7 @@ message AssetRequest{
 }
 
 message AssetResponse{
-  repeated Asset assetList = 1;
+  repeated Asset assets = 1;
 }
 
 message ActiveTradesRequest{
@@ -22,7 +22,7 @@ message ActiveTradesResponse{
   repeated Trade tradeList = 1;
 }
 message RegisterTradeRequest{
-  string trade = 1;
+  Trade trade = 1;
 }
 message CreateAccountRequest{
   string broker = 1;

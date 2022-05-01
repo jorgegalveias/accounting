@@ -44,8 +44,8 @@ message Trade {
   float price = 5;
   string comment = 6;
   TradeStatus status = 7;
-  TradeFees fees = 8;
-  google.type.Money currency = 9;
+  google.type.Money fees = 8;
+  string currency = 9;
   string broker = 10;
   float forexRate = 11;
   string trader = 12;
