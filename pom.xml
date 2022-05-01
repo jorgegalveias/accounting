@@ -10,6 +10,7 @@
     <modules>
         <module>trade-accounting</module>
         <module>trade-accounting-model</module>
+        <module>rabbitmq</module>
     </modules>
     <packaging>pom</packaging>
 

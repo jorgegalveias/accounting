@@ -1,0 +1,1 @@
+docker run -it --network accounting_default --rm redis redis-cli -h some-redis
