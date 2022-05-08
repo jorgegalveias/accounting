@@ -16,6 +16,10 @@
 * grpc
 * lombok
 
+## Build The Project
+```shell
+  make build
+```
 ## Running Tests
 ```shell
 mvn test
