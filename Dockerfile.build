@@ -1,0 +1,7 @@
+FROM maven:3.8.5-amazoncorretto-11 AS builder
+
+WORKDIR /build
+
+COPY . .
+
+RUN mvn clean install -DskipTests=True
