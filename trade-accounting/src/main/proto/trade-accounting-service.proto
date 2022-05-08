@@ -25,13 +25,18 @@ message RegisterTradeRequest{
   Trade trade = 1;
 }
 message CreateAccountRequest{
-  string broker = 1;
-  google.type.Money currency = 2;
+  string accountId = 1;
+  string broker = 2;
+  google.type.Money currency = 3;
+}
+
+message CreateAccountResponse{
+  string accountId = 1;
 }
 
 service TradeAccountingService {
   rpc getAssets(AssetRequest) returns (AssetResponse);
   rpc getActiveTrades(ActiveTradesRequest) returns (ActiveTradesResponse);
   rpc registerTrade(RegisterTradeRequest) returns (google.protobuf.Empty);
-  rpc createAccount(RegisterTradeRequest) returns (google.protobuf.Empty);
+  rpc createAccount(CreateAccountRequest) returns (CreateAccountResponse);
 }

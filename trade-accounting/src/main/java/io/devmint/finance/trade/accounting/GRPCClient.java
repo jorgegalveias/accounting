@@ -2,6 +2,7 @@ package io.devmint.finance.trade.accounting;
 
 import io.devmint.finance.trade.accounting.service.AssetRequest;
 import io.devmint.finance.trade.accounting.service.AssetResponse;
+import io.devmint.finance.trade.accounting.service.CreateAccountRequest;
 import io.devmint.finance.trade.accounting.service.TradeAccountingServiceGrpc;
 import io.grpc.ManagedChannel;
 import io.grpc.ManagedChannelBuilder;
@@ -15,6 +16,10 @@ public class GRPCClient {
         TradeAccountingServiceGrpc.TradeAccountingServiceBlockingStub syncClient = TradeAccountingServiceGrpc.newBlockingStub(channel);
 
         AssetRequest request = AssetRequest.newBuilder().setBroker("Dummy Broker").build();
+
+        CreateAccountRequest request2 = CreateAccountRequest.newBuilder().build();
+
+        syncClient.createAccount(request2);
 
         AssetResponse response = syncClient.getAssets(request);
 

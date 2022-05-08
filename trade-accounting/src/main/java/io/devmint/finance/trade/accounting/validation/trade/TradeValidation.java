@@ -46,7 +46,7 @@ public class TradeValidation implements Validator<Trade> {
 
     @Override
     public String getErrorMsg(Trade trade) {
-        return checkForErrors(trade).stream().collect(Collectors.joining("."));
+        return getErrors(trade).stream().collect(Collectors.joining("."));
     }
 
     static <TRADE,FIELD> Validator<TRADE> fromFieldValidator(Function<TRADE,FIELD> fieldValue, Validator<FIELD> validator) {

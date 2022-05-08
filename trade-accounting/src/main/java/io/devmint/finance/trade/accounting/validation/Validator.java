@@ -25,7 +25,7 @@ public interface Validator<T>{
         return !isValid(t);
     }
 
-    default List<String> checkForErrors(T parameter){
+    default List<String> getErrors(T parameter){
 
         Map<Validator<T>, String> errors = getValidations().stream().filter(validator -> validator.hasErrors(parameter))
                                                                     .collect(Collectors.toMap(validator -> validator, validator -> validator.getErrorMsg(parameter)));
