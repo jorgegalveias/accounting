@@ -53,9 +53,10 @@ message Trade {
 message Account {
     string id = 1;
     string broker = 2;
-    google.type.Money currency = 3;
+    string currency = 3;
     repeated Asset portfolio = 4;
     repeated Trade activeTrades = 5;
+    repeated Trade closedTrades = 6;
 }
 message Asset {
   Security security = 1;
