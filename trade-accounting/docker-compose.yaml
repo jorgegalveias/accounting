@@ -1,5 +1,16 @@
-version: '3'
+version: '3.4'
 services:
   test-redis:
     image: redis
-
+  accounting-server:
+    build:
+      context: .
+      args:
+        - version=0.0.1-SNAPSHOT
+    environment:
+      - REDIS_HOST=test-redis
+      - GRPC_SERVER_PORT=7778
+    ports:
+      - "7778:7778"
+    depends_on:
+      - test-redis
