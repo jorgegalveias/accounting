@@ -10,6 +10,7 @@ import java.util.stream.Collectors;
 
 public interface Validator<T>{
 
+    // TODO: maybe this should not be default
     default  List<Validator<T>> getValidations(){
         return Arrays.asList(this);
     }
@@ -35,7 +36,7 @@ public interface Validator<T>{
     }
 
     default String genericErrorMsg(Supplier<String> fieldName,Supplier<String> fieldValue){
-        return String.format("%s=%s is not valid", fieldName.get(),fieldValue.get());
+        return String.format("%s='%s' is not valid", fieldName.get(),fieldValue.get());
     }
 
 

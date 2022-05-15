@@ -17,7 +17,7 @@ public class GRPCServer {
         Integer grpcPort = Integer.valueOf(System.getenv().getOrDefault(AppEnvVars.GRPC_SERVER_PORT,String.valueOf(DEFAULT_GRPC_SERVER_PORT)));
 
         Server server = ServerBuilder.forPort(grpcPort)
-                .addService(new TradeAccountingService())
+                .addService(new AccountService())
                 .build();
 
         LOGGER.info("Binding grpc to port {}", grpcPort);

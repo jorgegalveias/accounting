@@ -2,12 +2,14 @@ package io.devmint.finance.trade.accounting.validation.generic;
 
 import io.devmint.finance.trade.accounting.validation.Validator;
 
+import java.util.Objects;
 import java.util.function.Predicate;
 import java.util.function.Supplier;
 
 public class StringValidator implements Validator<String> {
 
     //GenericValidator<String> validator;
+
     Supplier<String> fieldName;
 
     public StringValidator(Supplier<String> fieldName){
@@ -16,7 +18,7 @@ public class StringValidator implements Validator<String> {
     }
     @Override
     public Predicate<String> getCondition() {
-        return value -> !value.isBlank();
+        return value -> Objects.nonNull(value) && !value.isBlank();
     }
 
     @Override

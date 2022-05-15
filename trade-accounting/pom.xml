@@ -92,6 +92,11 @@
             <artifactId>lettuce-core</artifactId>
             <version>6.1.8.RELEASE</version>
         </dependency>
+        <dependency>
+            <groupId>redis.clients</groupId>
+            <artifactId>jedis</artifactId>
+            <version>4.2.0</version>
+        </dependency>
     </dependencies>
 
     <build>

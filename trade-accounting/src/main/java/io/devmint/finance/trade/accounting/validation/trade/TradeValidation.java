@@ -3,7 +3,7 @@ package io.devmint.finance.trade.accounting.validation.trade;
 import io.devmint.finance.trade.accounting.model.Trade;
 import io.devmint.finance.trade.accounting.validation.Validator;
 import io.devmint.finance.trade.accounting.validation.currency.CurrencyValidation;
-import io.devmint.finance.trade.accounting.validation.generic.GenericValidator;
+import io.devmint.finance.trade.accounting.validation.field.FieldValidator;
 import io.devmint.finance.trade.accounting.validation.generic.MoneyValidator;
 import io.devmint.finance.trade.accounting.validation.security.SecurityValidation;
 
@@ -50,7 +50,7 @@ public class TradeValidation implements Validator<Trade> {
     }
 
     static <TRADE,FIELD> Validator<TRADE> fromFieldValidator(Function<TRADE,FIELD> fieldValue, Validator<FIELD> validator) {
-        return new GenericValidator<TRADE>(trade -> validator.getCondition().test(fieldValue.apply(trade)), trade -> validator.getErrorMsg(fieldValue.apply(trade)));
+        return new FieldValidator<TRADE>(trade -> validator.getCondition().test(fieldValue.apply(trade)), trade -> validator.getErrorMsg(fieldValue.apply(trade)));
     }
 
 }
