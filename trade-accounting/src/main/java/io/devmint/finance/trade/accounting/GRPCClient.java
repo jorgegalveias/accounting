@@ -16,7 +16,8 @@ public class GRPCClient {
 
         AccountServiceGrpc.AccountServiceBlockingStub syncClient = AccountServiceGrpc.newBlockingStub(channel);
 
-        AssetRequest request = AssetRequest.newBuilder().setBroker("Dummy Broker").buil
+        AssetRequest request = AssetRequest.newBuilder().setBroker("Dummy Broker").build();
+
         CreateAccountRequest request2 = CreateAccountRequest.newBuilder().setBroker("OANDA").setCurrency("EUR").build();
 
         syncClient.createAccount(request2);
