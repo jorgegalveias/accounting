@@ -1,18 +1,16 @@
 package io.devmint.finance.trade.accounting;
 
-import com.google.protobuf.Any;
-import com.google.protobuf.Empty;
-import com.google.rpc.Code;
-import com.google.rpc.Status;
 import io.devmint.finance.trade.accounting.model.Asset;
 import io.devmint.finance.trade.accounting.model.Security;
 import io.devmint.finance.trade.accounting.service.*;
 import io.devmint.finance.trade.accounting.validation.Validator;
 import io.devmint.finance.trade.accounting.validation.account.AccountCreationValidator;
-import io.grpc.protobuf.StatusProto;
+import io.grpc.Status;
 import io.grpc.stub.StreamObserver;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+
+import java.util.Objects;
 
 public class TradeAccountingService extends TradeAccountingServiceGrpc.TradeAccountingServiceImplBase {
 
@@ -38,14 +36,13 @@ public class TradeAccountingService extends TradeAccountingServiceGrpc.TradeAcco
     public void createAccount(CreateAccountRequest request, StreamObserver<CreateAccountResponse> responseObserver) {
 
         if(accountRequestValidator.hasErrors(request)){
-            Status status = Status.newBuilder()
-                    .setCode(Code.INVALID_ARGUMENT.getNumber())
-                    .setMessage(accountRequestValidator.getErrorMsg(request))
-                    .build();
-            responseObserver.onError(StatusProto.toStatusRuntimeException(status));
+            responseObserver.onError(Status.INVALID_ARGUMENT.withDescription(accountRequestValidator.getErrorMsg(request)).asRuntimeException());
             return;
         }
 
-        super.createAccount(request, responseObserver);
+        new CreateAccount().apply(request);
+
+        responseObserver.onNext(CreateAccountResponse.newBuilder().setAccountId(request.getAccountId()).build());
+        responseObserver.onCompleted();
     }
 }
