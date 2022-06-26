@@ -17,11 +17,20 @@ class SecurityValidationSpec extends Specification {
     }
     def "Security with empty ISIN is not valid"(){
         given:
-            Security security = Security.newBuilder().build();
+            Security security = Security.newBuilder().setName("anything").build();
         when:
             boolean isSecurityValid = new SecurityValidation({->"security"}).isValid(security)
         then:
             isSecurityValid == false
     }
+    def "Security with empty name is not valid"(){
+        given:
+            Security security = Security.newBuilder().setIsin("anything").build();
+        when:
+            boolean isSecurityValid = new SecurityValidation({->"security"}).isValid(security)
+        then:
+            isSecurityValid == false
+    }
+
 
 }
