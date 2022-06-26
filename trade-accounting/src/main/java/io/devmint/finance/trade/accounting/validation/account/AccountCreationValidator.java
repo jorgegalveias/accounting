@@ -4,6 +4,7 @@ import io.devmint.finance.trade.accounting.service.CreateAccountRequest;
 import io.devmint.finance.trade.accounting.validation.Validator;
 import io.devmint.finance.trade.accounting.validation.compose.ComposeValidator;
 import io.devmint.finance.trade.accounting.validation.currency.CurrencyValidation;
+import io.devmint.finance.trade.accounting.validation.field.FieldValidator;
 import io.devmint.finance.trade.accounting.validation.trade.BrokerValidation;
 
 import java.util.Arrays;
@@ -11,10 +12,10 @@ import java.util.List;
 import java.util.function.Predicate;
 
 public class AccountCreationValidator implements Validator<CreateAccountRequest> {
-
+    
     List<Validator<CreateAccountRequest> > validations = Arrays.asList(
-            ComposeValidator.fromFieldValidator(CreateAccountRequest::getBroker,new BrokerValidation(() -> "broker")),
-            ComposeValidator.fromFieldValidator(CreateAccountRequest::getCurrency, new CurrencyValidation(() -> "currency"))
+            FieldValidator.forField(CreateAccountRequest::getBroker,new BrokerValidation(() -> "broker")),
+            FieldValidator.forField(CreateAccountRequest::getCurrency, new CurrencyValidation(() -> "currency"))
     );
 
     Validator<CreateAccountRequest> compositeValidator;

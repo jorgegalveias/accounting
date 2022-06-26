@@ -3,6 +3,7 @@ package io.devmint.finance.trade.accounting.validation.account;
 import io.devmint.finance.trade.accounting.service.GetAccountRequest;
 import io.devmint.finance.trade.accounting.validation.Validator;
 import io.devmint.finance.trade.accounting.validation.compose.ComposeValidator;
+import io.devmint.finance.trade.accounting.validation.field.FieldValidator;
 import io.devmint.finance.trade.accounting.validation.trade.BrokerValidation;
 
 import java.util.Arrays;
@@ -12,7 +13,7 @@ import java.util.function.Predicate;
 public class GetAccountValidator implements Validator<GetAccountRequest> {
 
     List<Validator<GetAccountRequest>> validators = Arrays.asList(
-            ComposeValidator.fromFieldValidator(GetAccountRequest::getBroker,new BrokerValidation(() -> "broker"))
+            FieldValidator.forField(GetAccountRequest::getBroker,new BrokerValidation(() -> "broker"))
     );
 
     Validator<GetAccountRequest> compositeValidator;

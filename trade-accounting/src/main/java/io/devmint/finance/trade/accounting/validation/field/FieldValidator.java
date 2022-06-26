@@ -33,5 +33,8 @@ public class FieldValidator<T> implements Validator<T> {
     public String getErrorMsg(T fieldValue) {
         return this.errorMsg.apply(fieldValue);
     }
+    public static <TYPE,FIELD> Validator<TYPE> forField(Function<TYPE,FIELD> fieldValue, Validator<FIELD> validator) {
+        return new FieldValidator<TYPE>(type -> validator.getCondition().test(fieldValue.apply(type)), type -> validator.getErrorMsg(fieldValue.apply(type)));
+    }
 
 }
